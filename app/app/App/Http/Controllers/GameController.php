@@ -132,7 +132,10 @@ class GameController extends Controller
         // Inside of $player you have the player which wants to play now.
         // If he is allowed to play, you have to return true, otherwise you have to return false.
 
-        return true;
+        if($game->getLastPlayer() === $player)
+            return false;
+        else
+            return true;
     }
 
     /**
@@ -176,7 +179,7 @@ class GameController extends Controller
         // $game->setSpace( $x, $y, GameMark::Circle ).
         // [ The code to check if the space is free goes here ]
 
-        if($game->getSpace( $x, $y ) !== GameMark::Cross)
+        if($game->getSpace( $x, $y ) === GameMark::Cross)
             return response("This space has already been claimed!")->setStatusCode(403)->header('Content-Type', 'text/plain');
         if($game->getSpace( $x, $y ) === GameMark::Circle)
             return response("This space has already been claimed!")->setStatusCode(403)->header('Content-Type', 'text/plain');
