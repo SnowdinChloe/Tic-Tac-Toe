@@ -50,7 +50,7 @@ class GameController extends Controller
         // remove spaces and line breaks ;)
         // =============================================================================================================
 
-        for($i=0; $i < self::TTT_SIZE; $i++)
+        for($i=0; $i <= 2; $i++)
         {
             if (    // Check the first row
                 $game->getRow($i)->getSpace( 0 ) === $game->getRow($i)->getSpace( 1 ) &&
@@ -59,7 +59,7 @@ class GameController extends Controller
             ) return true;
         }
 
-        for($i=0; $i < self::TTT_SIZE; $i++)
+        for($i=0; $i <= 2; $i++)
         {
             if (    // Check the first column
                 $game->getColumn($i)->getSpace( 0 ) === $game->getColumn($i)->getSpace( 1 ) &&
